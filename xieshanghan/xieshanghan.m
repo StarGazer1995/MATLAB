@@ -1,0 +1,11 @@
+clear;clc;
+[xxxx.data,xxxx.fs]=audioread('G:\\MATLAB\\script\\xieshanghan\\xxxx.wav');
+[cs.data,cs.fs]=audioread('G:\\MATLAB\\script\\xieshanghan\\Ìì¿ÕÖ®³Ç.mp3');
+xxxx.len=length(xxxx.data);
+cs.len=length(cs.data);
+xxxx.f=[-xxxx.len/2:1:xxxx.len/2-1]*xxxx.fs/xxxx.len;
+cs.f=[-cs.len/2:1:cs.len/2-1]*cs.fs/cs.len;
+figure();
+plot(xxxx.f,fftshift(fft(xxxx.data)));
+figure();
+plot(cs.f,fftshift(fft(cs.data)));

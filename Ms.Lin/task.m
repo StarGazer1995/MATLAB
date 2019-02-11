@@ -1,0 +1,20 @@
+clear all;clc;
+x=-1:0.5:1;
+p=[1,-2,0];
+y=polyval(p,x);
+randomset=rand(size(y))*5.5-0.5*ones(size(y));
+y_random=y+randomset;
+SetB=y_random;
+setP.degree1=polyfit(x,SetB,1);
+setP.degree2=polyfit(x,SetB,2);
+setP.degree3=polyfit(x,SetB,3);
+setP.degree4=polyfit(x,SetB,4);
+error.degree1=SetB-polyval(setP.degree1,x);
+error.degree2=SetB-polyval(setP.degree2,x);
+error.degree3=SetB-polyval(setP.degree3,x);
+error.degree4=SetB-polyval(setP.degree4,x);figure();
+plot(x,SetB,x,polyval(setP.degree1,x),x,polyval(setP.degree1,x),x,polyval(setP.degree2,x),x,polyval(setP.degree3,x),x,polyval(setP.degree4,x));
+legend('orginal','promonial.degree1','promonial.degree2','promonial.degree3','promonial.degree4')
+figure();
+plot(x,error.degree1,x,error.degree1,x,error.degree2,x,error.degree3,x,error.degree4)
+legend('error.degree1','error.degree2','error.degree3','error.degree4')
